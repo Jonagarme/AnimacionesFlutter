@@ -65,8 +65,8 @@ class __CuadradoAnimadoState extends State<_CuadradoAnimado>
 
     controller.addListener(() {
       if (controller.status == AnimationStatus.completed) {
-        controller.reset();
-        //controller.repeat();
+        //controller.reset();
+        controller.repeat();
       }
     });
   }
