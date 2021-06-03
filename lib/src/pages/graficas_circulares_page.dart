@@ -23,19 +23,61 @@ class _GraficasCircularesState extends State<GraficasCirculares> {
         },
         child: Icon(Icons.refresh),
       ),
-      body: Center(
-        //child: Text('$porcentaje %', style: TextStyle(fontSize: 50.0)),
-        child: Container(
-          width: 300,
-          height: 300,
-          child: RadialProgress(
-            porcentaje: porcentaje,
-            colorPrimario: Colors.purple,
-            colorSecundario: Colors.grey,
-            grosoPrimario: 10,
-            grosorSecundario: 4,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomRadialProgress(
+                porcentaje: porcentaje,
+                color: Colors.blue,
+              ),
+              CustomRadialProgress(
+                porcentaje: porcentaje,
+                color: Colors.red,
+              ),
+            ],
           ),
-        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomRadialProgress(
+                porcentaje: porcentaje,
+                color: Colors.pink,
+              ),
+              CustomRadialProgress(
+                porcentaje: porcentaje,
+                color: Colors.purple,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomRadialProgress extends StatelessWidget {
+  final Color color;
+  const CustomRadialProgress({
+    @required this.porcentaje,
+    @required this.color,
+  });
+
+  final double porcentaje;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 180,
+      height: 180,
+      child: RadialProgress(
+        porcentaje: porcentaje,
+        colorPrimario: this.color,
+        colorSecundario: Colors.grey,
+        grosoPrimario: 10,
+        grosorSecundario: 4,
       ),
     );
   }
